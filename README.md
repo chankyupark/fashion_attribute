@@ -16,43 +16,19 @@ Setup the environment
     conda activate torch17
     pip install -r requirements.txt
 ```
-## How to test the model
+## Download model weights
 
 1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.  
 2.   Downoad Clothing-MA model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
-3.   Run 'file_demo.py' to run each image file demostration
-
-
-
-   Copyright (c) 2010, NAVER Corporation (https://www.navercorp.com/),
-
-   with Reserved Font Name Nanum, Naver Nanum, NanumGothic, Naver NanumGothic, NanumMyeongjo, 
-   Naver NanumMyeongjo, NanumBrush, Naver NanumBrush, NanumPen, Naver NanumPen, Naver NanumGothicEco, 
-   NanumGothicEco, Naver NanumMyeongjoEco, NanumMyeongjoEco, Naver NanumGothicLight, NanumGothicLight, 
-   NanumBarunGothic, Naver NanumBarunGothic, NanumSquareRound, NanumBarunPen, MaruBuri
-
-   This Font Software is licensed under the SIL Open Font License, Version 1.1.
-   This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
-
-   SIL OPEN FONT LICENSE
-   Version 1.1 - 26 February 2007 
-   ```
+ 
    
-### Run
-#### Webcamera demo
-
-Run the demo code with the webcam number (we used 0).
-   ```bash
-   python my_demo_det_multi.py --webcam_num 0
-   ```
-   
-#### Image demo
+#### demo(off_line)
 
 Run the demo code with the sample images.
    ```bash
-   python my_demo_det_multi.py --image_dir sample_images
+   python file_demo_outer.py
    ```
    
-#### CLOi demo
+#### demo (on_line)
 
-The code will be updated.
+You can access [here](https://fashion-classifier-demo.herokuapp.com) 
