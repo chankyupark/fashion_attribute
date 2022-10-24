@@ -11,14 +11,6 @@ from util import count_parameters as count
 from util import convert2cpu as cpu
 from util import predict_transform
 
-#from roi_align.roi_align import RoIAlign
-
-""" def to_varabile(arr, requires_grad=False, is_cuda=True):
-    tensor = torch.from_numpy(arr)
-    if is_cuda:
-        tensor = tensor.cuda()
-    var = Variable(tensor, requires_grad=requires_grad)
-    return var """
 
 def to_varabile(tensor, requires_grad=False, is_cuda=True):
     if is_cuda:
@@ -66,9 +58,8 @@ def parse_cfg(cfgfile):
             block[key.rstrip()] = value.lstrip()
     blocks.append(block)
 
-#    print('\n\n'.join([repr(x) for x in blocks]))
     return blocks
-#    print('\n\n'.join([repr(x) for x in blocks]))
+
 
 import pickle as pkl
 
@@ -535,14 +526,3 @@ class Darknet(nn.Module):
                 #Let us save the weights for the Convolutional layers
                 cpu(conv.weight.data).numpy().tofile(fp)
                
-
-
-
-
-#
-#dn = Darknet('cfg/yolov3.cfg')
-#dn.load_weights("yolov3.weights")
-#inp = get_test_input()
-#a, interms = dn(inp)
-#dn.eval()
-#a_i, interms_i = dn(inp)
