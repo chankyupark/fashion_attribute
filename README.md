@@ -18,15 +18,12 @@ Setup the environment
 ```
 ## How to test the model
 
-1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'Air-Clothing-MA root directory'.  
-2.   Downoad Clothing-MA model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'Air-Clothing-MA root directory'.
+1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.  
+2.   Downoad Clothing-MA model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
 3.   Run 'file_demo.py' to run each image file demostration
-4.   Run 'cam_demo.py' to run web-cam demostration
 
 
 
-4. Download [nanumgothic.ttf](https://fonts.google.com/download?family=Nanum%20Gothic) and install (unzip, mv the folder to /usr/share/fonts/, then fc-cache -f -v)
-   ```
    Copyright (c) 2010, NAVER Corporation (https://www.navercorp.com/),
 
    with Reserved Font Name Nanum, Naver Nanum, NanumGothic, Naver NanumGothic, NanumMyeongjo, 
