@@ -122,7 +122,7 @@ def main(args):
         exit()
 
      #3. loading model
-    check_point = torch.load('checkpoints/'+ args.model+ '_best.pth.tar')
+    check_point = torch.load('cfg/'+ args.model+ '_best.pth.tar')
     state_dict = check_point['state_dict']
     if args.arch == 'resnet50':
         model = model_n.__dict__['resnet50'](pretrained=True, num_classes=len(attribute_dim), attribute_dim=attribute_dim)
@@ -245,10 +245,7 @@ if __name__ == '__main__':
     
     parser.add_argument('--model', type=str, default='41k_outer', help='path for trained encoder')
     parser.add_argument('--arch', type=str, default='resnet50', help='arch for main model')
-    #parser.add_argument('--encoder_path', type=str, default='encoder-34-409.ckpt', help='path for trained encoder')
-   
-    parser.add_argument('--vocab_path1', type=str, default='json/train_up_vocab.pkl', help='path for vocabulary wrapper')
-    parser.add_argument('--test', type=str, default='#mall_elderly', help='path for vocabulary wrapper')
+    parser.add_argument('--test', type=str, default='image', help='path for vocabulary wrapper')
    
     # Encoder - Yolo-v3 parameters 
     parser.add_argument('--confidence', type=float, default = 0.5, help = 'Object Confidence to filter predictions')
