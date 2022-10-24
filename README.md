@@ -22,11 +22,11 @@ Setup the environment
 2.   Downoad fashion multi-attribute classification model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
  
    
-### demo
+## Demo
 (off-line)
 Run the demo code with the sample images.
    ```bash
    python file_demo_outer.py
-
+```
 (on-line)   
 You can access [here](https://fashion-classifier-demo.herokuapp.com) 
