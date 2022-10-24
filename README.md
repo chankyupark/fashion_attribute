@@ -28,5 +28,5 @@ Run the demo code with the sample images.
    ```bash
    python file_demo_outer.py
 
-(on-line)   ```
+(on-line)   
 You can access [here](https://fashion-classifier-demo.herokuapp.com) 
