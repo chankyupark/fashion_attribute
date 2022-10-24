@@ -26,8 +26,8 @@ import resnet50_fc as model_fc
 import matplotlib.pyplot as plt
 import sys
 
-#파일 단위 데모 프로그램
-#데모 : 상의-하의 + 상의 only + 하의 only
+#file based demo progarm
+#funtion : upper + lower , upper only, lower only
 
 transform_test = transforms.Compose([
         transforms.Resize(size=(256, 128)),
@@ -91,7 +91,7 @@ def convert_image_np(inp):
 
 def main(args):
 
-    #1. Human ROI 검출을 위한 yolov3 detector를 설정하고 모델을 로드하는 작업
+    #1. Yolov3 : for Human ROI detection
     num_classes = 80
     yolov3  = Darknet(args.cfg_file)
     yolov3.load_weights(args.weights_file)
@@ -106,7 +106,7 @@ def main(args):
 
     attribute_dim = [16, 15, 3, 5, 14, 4, 8, 6, 4, 4, 12, 16, 15, 3, 5, 4, 9, 4, 3, 4, 23] #21개
 
-    #2. 데모로 보여줄 이미지 파일들을 읽어들여 리스트를 만드는 과정
+    #2. listing image files from sample directory
     try:
         list_dir = os.listdir(args.test)
      #   list_dir.sort(key=lambda f: int(filter(str.isdigit, f)))
@@ -121,15 +121,11 @@ def main(args):
         print ("No file or directory with the name {}".format(args.test))
         exit()
 
-     #3. 패션 다중속성 분류 모델을 메모리에 로드하는 작업
+     #3. loading model
     check_point = torch.load('checkpoints/'+ args.model+ '_best.pth.tar')
     state_dict = check_point['state_dict']
     if args.arch == 'resnet50':
         model = model_n.__dict__['resnet50'](pretrained=True, num_classes=len(attribute_dim), attribute_dim=attribute_dim)
-    if args.arch == 'resnet50_fc':
-        model = model_fc.__dict__['resnet50_fc'](pretrained=True, num_classes=len(attribute_dim), attribute_dim=attribute_dim)
-    if args.arch == 'resnet50_stn':
-        model = model_attn.__dict__['resnet50_attn'](pretrained=True, num_classes=len(attribute_dim), attribute_dim=attribute_dim)
     
     from collections import OrderedDict
     new_state_dict = OrderedDict()
@@ -141,8 +137,7 @@ def main(args):
     model.eval()
     print(args.model)
     
-    #4. 데모용 이미지 리스트에서 하나씩 이미지를 가져와 사람 ROI을 검출하고 
-    #   검출된 ROI를 다중속성모델로 입력하여 속성분류 결과를 얻고 이를 화면에 정렬하여 보여주는 루틴
+    #4. demo routine for each sample file
     with torch.no_grad():
         for inx, image in enumerate(imlist):
 
@@ -154,7 +149,7 @@ def main(args):
             image_tensor = image.to(device)
             im_dim = im_dim.to(device)
             
-            #4-1. 이미지내에서 사람의 ROI의 후보들을 검출하는 작업
+            #4-1. detect candidates for human ROI
             detections = yolov3(image_tensor, device, True) # prediction mode for yolo-v3
             detections = write_results(detections, args.confidence, num_classes, device, nms=True, nms_conf=args.nms_thresh)
             # original image dimension --> im_dim
@@ -181,7 +176,7 @@ def main(args):
                         orig_img_area = im_dim[i, 0]*im_dim[i, 1]
                         small_object_ratio[i] = object_area/orig_img_area
                     
-                    #4-2. 사람 ROI 후보중에서 크기가 작은 것들은 제거함
+                    #4-2. remove small human ROI
                     detections = detections[small_object_ratio > 0.05]
                     im_dim = im_dim[small_object_ratio > 0.05] 
                     bboxs = detections[:, 1:5].clone()
@@ -189,7 +184,7 @@ def main(args):
                     if detections.size(0) > 0:
 
                         Roi = detections.cpu().numpy().astype(int)
-                        #4-3 사람 ROI 영역이 사람이 착용하는 악세사리, 가방, 신발등의 영역을 여유있게 포함하기 위해 상하좌우 영역을 조정
+                        #4-3 space margin for accessory
                         rois = []
                         for i in range(detections.shape[0]):
                             #roi = orig_img[Roi[i][2]:Roi[i][4], Roi[i][1]:Roi[i][3]]
@@ -198,12 +193,10 @@ def main(args):
                             roi = transform_test(roi).unsqueeze(0)
                             rois.append(roi)
                         
-                        #4.4 최종 결정된 사람 ROI영역을 원본이미지에서 크롭하여 리스트로 만듬
                         rois = torch.cat(rois, 0).cuda()
-                        #4.5 크롭되어 리스트화된 사람영역 이미지만을 다중속성모델에 입력하여 출력함
                         outputs = model(rois)
                                                 
-                        #4.6 출력된 예측 결과를 이용하여 속성문자열로 치환하여 예측 결과를 보여주는 출력작업
+                        #4.3 ouput multi-attributre results for fahion clothing
                         for i in range(detections.shape[0]):
                             sampled_caption = []
                             dress = False
@@ -245,7 +238,6 @@ def main(args):
             os.system('clear')
             if key & 0xFF == ord('q'): 
                 break
-
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()  
