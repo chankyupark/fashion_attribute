@@ -19,16 +19,14 @@ Setup the environment
 ## Download model weights
 
 1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.  
-2.   Downoad Clothing-MA model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
+2.   Downoad fashion multi-attribute classification model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
  
    
-#### demo(off_line)
-
+### demo
+(off-line)
 Run the demo code with the sample images.
    ```bash
    python file_demo_outer.py
-   ```
-   
-#### demo (on_line)
 
+(on-line)   ```
 You can access [here](https://fashion-classifier-demo.herokuapp.com) 
