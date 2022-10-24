@@ -5,11 +5,10 @@ The module has two main parts, an human ROI detector and a fashion multi-attribu
 Through each sample image, object human detector detects all human ROIs in the image and transfer all ROIs to multi-attribute classifier.
 
 ### Major Environment
-```bash
 * python 3.8
 * pytorch 1.7.0
 * pytorchvision 0.8.1
-```
+
 ### Installation
 ```bash
 Setup the environment
