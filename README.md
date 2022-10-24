@@ -10,8 +10,8 @@ Through each sample image, object human detector detects all human ROIs in the i
 * pytorchvision 0.8.1
 
 ### Installation
-```bash
 Setup the environment
+```bash
     conda create -n torch17 python=3.8 
     conda activate torch17
     pip install -r requirements.txt
