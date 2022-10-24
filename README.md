@@ -18,8 +18,16 @@ Setup the environment
 ```
 
 3. Make output folder and download [all weight files (detection and classification)](https://drive.google.com/drive/folders/1K4BJ0HryAPMJSsRM4e8NcVmwq_lWSn-j?usp=sharing) and move them to output folder.
-    ```
- 
+```
+## How to test the model
+
+1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'Air-Clothing-MA root directory'.  
+2.   Downoad Clothing-MA model from [here](https://drive.google.com/file/d/1k3lvA96ZstbV4a_QtYTuohY79xg_nJYe/view?usp=sharing) and put in 'Air-Clothing-MA root directory'.
+3.   Run 'file_demo.py' to run each image file demostration
+4.   Run 'cam_demo.py' to run web-cam demostration
+
+
+
 4. Download [nanumgothic.ttf](https://fonts.google.com/download?family=Nanum%20Gothic) and install (unzip, mv the folder to /usr/share/fonts/, then fc-cache -f -v)
    ```
    Copyright (c) 2010, NAVER Corporation (https://www.navercorp.com/),
