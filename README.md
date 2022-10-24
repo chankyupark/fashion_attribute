@@ -29,4 +29,4 @@ Run the demo code with the sample images.
    python file_demo_outer.py
 ```
 (on-line)   
-You can access [here](https://fashion-classifier-demo.herokuapp.com) 
+On-line demo access [here](https://fashion-classifier-demo.herokuapp.com) 
