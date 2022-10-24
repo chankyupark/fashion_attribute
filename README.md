@@ -16,9 +16,6 @@ Setup the environment
     conda activate torch17
     pip install -r requirements.txt
 ```
-
-3. Make output folder and download [all weight files (detection and classification)](https://drive.google.com/drive/folders/1K4BJ0HryAPMJSsRM4e8NcVmwq_lWSn-j?usp=sharing) and move them to output folder.
-```
 ## How to test the model
 
 1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'Air-Clothing-MA root directory'.  
