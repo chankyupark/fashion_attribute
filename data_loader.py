@@ -13,8 +13,7 @@ import cv2
 from torch.utils.data.sampler import SubsetRandomSampler
 import sys
 
-#다중 패션 속성 GT label을 지정하고 읽어 오는 Dataset 클래스 
-#GT label을 포함한 json 파일을 읽어서 로딩하는 작업 수행
+#defintion for fashion multi-attribute clothing data-set
 class ClothingDataset(data.Dataset):
     """Clothing Dataset compatible with torch.utils.data.DataLoader."""
     def __init__(self, root, json_file, vocab, transform=None):
@@ -69,10 +68,6 @@ class ClothingDataset(data.Dataset):
       
         if self.transform is not None:
             img_ = self.transform(crop_image)
-        #    print(str(img_id) + '  :  ' + caption + ' : '+gt_label)
-        #print(gt_label)
-
-        #GT 레이블이 스트링으로 되어 있기 때문에 개별 문자로 분리하여 target으로 저장
         target = list(map(int, gt_label.split(' ')))
         
         return img_, target, bbox
@@ -80,7 +75,6 @@ class ClothingDataset(data.Dataset):
     def __len__(self):
         return len(self.ids)
 
-# train, validation 작업을 위해 9:1로 학습집합을 랜덤샘플러로 나누고 9할을 학습에 사용하고 1할을 validation(검증)에 사용함
 def get_train_valid_loader(root, json_f, vocab, transform, batch_size, valid_size, random_seed, shuffle, num_workers):
     """Returns torch.utils.data.DataLoader for  clothing dataset."""
     # Clothing caption dataset
@@ -142,8 +136,6 @@ def get_train_valid_loader(root, json_f, vocab, transform, batch_size, valid_siz
 
     return train_loader, valid_loader
 
-# 1 epoch의 학습이 끝나면 그때까지의 학습된 모델을 시험 평가하기 위하여 test집합이 필요한데 
-# 별도로 test용으로 분리되었던 데이터를 로드하는 작업
 def get_test_loader(root, json_f, vocab, transform, batch_size, shuffle, num_workers):
     """Returns torch.utils.data.DataLoader for  clothing dataset."""
     # Clothing caption dataset
