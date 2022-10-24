@@ -21,8 +21,6 @@ from preprocess import automatic_brightness_and_contrast
 import natsort
 
 import resnet50 as model_n 
-import resnet50_attn as model_attn
-import resnet50_fc as model_fc
 import matplotlib.pyplot as plt
 import sys
 
