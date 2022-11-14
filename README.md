@@ -14,7 +14,7 @@ Setup the environment
 ```bash
     conda create -n torch17 python=3.8 
     conda activate torch17
-    pip install -r requirements.txt
+    pip install -r requirement.txt
 ```
 ## Download model weights
 
