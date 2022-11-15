@@ -25,12 +25,7 @@ import resnet50 as model_n
 
 path = os.environ['ROS2_SRC'] + '/fashion_att_pkg/fashion_attribute/'
 
-#file based demo progarm
-#funtion : upper + lower , upper only, lower only
 
-
-#  "winter scarf", "cane", "bag", "shoes", "hat", "face"]
-#attribute categories = #6
 colors_a =   ["----", "white", "black", "gray", "pink", "red", "green", "blue", "brown", "navy", "beige", \
     "yellow", "purple", "orange", "mixed-color", "other-color"]
 pattern_a =  ["----", "plain", "checker", "dotted", "floral", "striped", "mixed", "stripe-horizon", "stripe-vertical", \
@@ -46,8 +41,6 @@ length_a =   ["----", "short", "medium", "long"]
 fit_a =      ["----", "normal", "slim", "loose"]
 collar_a =   ["----", "none", "v-neck", "square-neck", "round-neck", "turtle", "v-shape", "round-shirt", "notched", \
         "off-shoulder", "hood", "band"]
-
-    #"winter scarf", "cane", "bag", "shoes", "hat", "face"]
 
 #Bottom => 5 attributes are shared by top attributes items: colors, pattern, gender, season, length
 
@@ -97,7 +90,10 @@ def make_json(detections, outputs):
         
         clothing = OrderedDict()        
         #temp = outputs[j][i].data
+        #사람 id : 사진속의 사람이 여러명일 경우 이 id로 구분
         clothing["id"] = i
+        #상의는 top 의 t_ 사용, 하의는 bottom 의 b_ 사용
+        #상의 속성 11가지
         clothing["t_color"] = attribute_pool[0][torch.max(outputs[0][i].data, 0)[1]]
         clothing["t_pattern"] = attribute_pool[1][torch.max(outputs[1][i].data, 0)[1]]
         clothing["t_gender"] = attribute_pool[2][torch.max(outputs[2][i].data, 0)[1]]
@@ -109,6 +105,7 @@ def make_json(detections, outputs):
         clothing["t_length"] = attribute_pool[8][torch.max(outputs[8][i].data, 0)[1]]
         clothing["t_fit"] = attribute_pool[9][torch.max(outputs[9][i].data, 0)[1]]
         clothing["t_collar"] = attribute_pool[10][torch.max(outputs[10][i].data, 0)[1]]
+        #하의 속성 7가지
         clothing["b_color"] = attribute_pool[11][torch.max(outputs[11][i].data, 0)[1]]
         clothing["b_pattern"] = attribute_pool[12][torch.max(outputs[12][i].data, 0)[1]]
         clothing["b_gender"] = attribute_pool[13][torch.max(outputs[13][i].data, 0)[1]]
@@ -116,8 +113,11 @@ def make_json(detections, outputs):
         clothing["b_length"] = attribute_pool[15][torch.max(outputs[15][i].data, 0)[1]]
         clothing["b_type"] = attribute_pool[16][torch.max(outputs[16][i].data, 0)[1]]
         clothing["b_legpose"] = attribute_pool[17][torch.max(outputs[17][i].data, 0)[1]]
+        #사진속의 사람의 성별 속성
         clothing["gender"] = attribute_pool[18][torch.max(outputs[18][i].data, 0)[1]]
+        #사진속의 사람이 안경/선글라스 착용여부
         clothing["glasses"] = attribute_pool[19][torch.max(outputs[19][i].data, 0)[1]]
+        #사진속의 사람이 착용한 옷의 스타일
         clothing["style"] = attribute_pool[20][torch.max(outputs[20][i].data, 0)[1]]
         
         clothings.append(clothing)
@@ -316,7 +316,7 @@ if __name__ == '__main__':
     coco_classes = load_classes(path + 'cfg/coco.names')
     colors = pkl.load(open(path + 'cfg/pallete2', "rb"))
     
-    
+    ###
     main()
   
 
