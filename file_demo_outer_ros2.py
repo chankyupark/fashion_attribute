@@ -183,7 +183,7 @@ class FashionAttributeDetection(object):
             # original image dimension --> im_dim
 
             
-            os.system('clear')
+            #os.system('clear')
             sentence_final = []
             
             #if type(detections) != int: 
