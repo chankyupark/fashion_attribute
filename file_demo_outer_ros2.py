@@ -23,6 +23,8 @@ from collections import OrderedDict
 
 import resnet50 as model_n 
 
+path = os.environ['ROS2_SRC'] + '/fashion_att_pkg/fashion_attribute/'
+
 #file based demo progarm
 #funtion : upper + lower , upper only, lower only
 
@@ -132,8 +134,9 @@ class FashionAttributeDetection(object):
         self.nms_thresh = 0.4
         self.num_classes = 80
         self.test = 'image'
-        self.yolov3  = Darknet('/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/yolov3.cfg')
-        self.yolov3.load_weights('/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/yolov3.weights')
+        
+        self.yolov3  = Darknet(path + 'cfg/yolov3.cfg')
+        self.yolov3.load_weights(path + 'cfg/yolov3.weights')
         self.yolov3.net_info["height"] = 416    
         self.inp_dim = int(self.yolov3.net_info["height"])
         assert self.inp_dim % 32 == 0 
@@ -145,7 +148,7 @@ class FashionAttributeDetection(object):
 
         self.attribute_dim = [16, 15, 3, 5, 14, 4, 8, 6, 4, 4, 12, 16, 15, 3, 5, 4, 9, 4, 3, 4, 23] #21개
 
-        check_point = torch.load('/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/41k_outer_best.pth.tar')
+        check_point = torch.load(path + 'cfg/41k_outer_best.pth.tar')
         state_dict = check_point['state_dict']
         
         self.model = model_n.__dict__['resnet50'](pretrained=True, num_classes=len(self.attribute_dim), attribute_dim=self.attribute_dim)
@@ -159,8 +162,8 @@ class FashionAttributeDetection(object):
         self.model.to(device)
         self.model.eval()
 
-        self.coco_classes = load_classes('/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/coco.names')
-        self.colors = pkl.load(open("/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/pallete2", "rb"))
+        self.coco_classes = load_classes(path + 'cfg/coco.names')
+        self.colors = pkl.load(open(path + 'cfg/pallete2', "rb"))
 
     def predict(self, image):
 
@@ -309,8 +312,9 @@ def main():
     
 if __name__ == '__main__':
      
-    coco_classes = load_classes('/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/coco.names')
-    colors = pkl.load(open("/home/goodman/ros2/src/fashion_att_pkg/fashion_model/cfg/pallete2", "rb"))
+    
+    coco_classes = load_classes(path + 'cfg/coco.names')
+    colors = pkl.load(open(path + 'cfg/pallete2', "rb"))
     
     
     main()
