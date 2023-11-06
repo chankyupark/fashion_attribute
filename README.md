@@ -29,7 +29,7 @@ Run the demo code with the sample images.
    python file_demo_outer.py
 ```
 ## Test Dataset
-You can get Test Dataset of fashion attribute that includes 5,000 images and Ground Truth labels
+You can get Test Dataset of fashion attribute that includes 5,000 images and Ground Truth labels.
 Download Test dataset from [here](https://drive.google.com/file/d/1JGNKF9vusQcZ6Did7SyNc3nQexPoLJ70/view?usp=sharing) 
 
 (on-line)   
