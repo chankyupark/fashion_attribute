@@ -34,10 +34,10 @@ Download Test dataset from [here](https://drive.google.com/file/d/1JGNKF9vusQcZ6
 
 <img src="fashion_figs.png" width="80%" height="80%" title="px(픽셀) 크기 설정" alt="Demo_image"></img>
 
-## On-line Demo
-On-line demo access [here](https://fashion-classifier-demo.herokuapp.com) 
-
 ## Fashion multi-attributes definition
 Our classifier can classify not only the attributes of the outerwear, but also the attributes of the innerwear.
 
 <img src="fashion_attributes.png" width="80%" height="80%" title="px(픽셀) 크기 설정" alt="Demo_image"></img>
+
+## On-line Demo
+On-line demo access [here](https://fashion-classifier-demo.herokuapp.com) 
