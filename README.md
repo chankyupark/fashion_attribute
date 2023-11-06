@@ -31,9 +31,10 @@ Run the demo code with the sample images.
 ## Test Dataset
 You can get Test Dataset of fashion attribute that includes 5,000 images and Ground Truth labels.
 Download Test dataset from [here](https://drive.google.com/file/d/1JGNKF9vusQcZ6Did7SyNc3nQexPoLJ70/view?usp=sharing) 
+
 <img src="fashion_figs.png" width="80%" height="80%" title="px(픽셀) 크기 설정" alt="Demo_image"></img>
 
-##on-line)   
+## on-line   
 On-line demo access [here](https://fashion-classifier-demo.herokuapp.com) 
 
 ## fashion multi-attributes definition
