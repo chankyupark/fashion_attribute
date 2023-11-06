@@ -18,8 +18,8 @@ Setup the environment
 ```
 ## Download model weights
 
-1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1yCz6pc6qHJD2Zcz8ldDmJ3NzE8wjaiT6/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.  
-2.   Downoad fashion multi-attribute classification model from [here](https://drive.google.com/file/d/1oM-KrNIklN4uK14XkxGqlYcSLKKYqv7C/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
+1.   Download yolo-v3 model from [here](https://drive.google.com/file/d/1kD12GEZw6nRYaqO9-1m8dairpX89z5VE/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.  
+2.   Downoad fashion multi-attribute classification model from [here](https://drive.google.com/file/d/1hu3F7Ly1rEbk8L8OZCeVgZba-IYrPKXB/view?usp=sharing) and put in 'fashion_attribute/cfg directory'.
  
    
 ## Demo
