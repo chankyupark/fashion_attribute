@@ -41,3 +41,16 @@ Our classifier can classify not only the attributes of the outerwear, but also t
 
 ## On-line Demo
 On-line demo access [here](https://fashion-classifier-demo.herokuapp.com) 
+
+## Citation
+If you find this repo helpful and use it in your work/paper, please cite:
+```
+@misc{chankyu_fashion_attribute2022,
+  author = {Chankyu Park, Minsu Jang},
+  title = {fashion multi-attribute classification},
+  year = {2022},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/chankyupark/fashion_attribute}}
+}
+```
